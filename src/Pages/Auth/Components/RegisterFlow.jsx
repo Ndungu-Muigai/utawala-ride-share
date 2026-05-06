@@ -82,7 +82,7 @@ const RegisterFlow = ({ onSwitchToLogin }) =>
 
             {
                 step === 2 && 
-                    <BasicInfoStep form={form} onChange={update} onBack={() => setStep(1)} onNext={() => role === "driver" ? setStep(3) : handlePassengerSubmit()} loading={loading} isPassenger={role === "passenger"} onSubmit={handleDriverSubmit}/>
+                    <BasicInfoStep form={form} onChange={update} onBack={() => setStep(1)} onNext={() => role === "driver" ? setStep(3) : handlePassengerSubmit()} loading={loading} isPassenger={role === "passenger"} onSubmit={handleDriverSubmit} loading={loading}/>
             }
 
             {

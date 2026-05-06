@@ -2,7 +2,7 @@ import { TextInput } from "./FormField"
 import PasswordInput from "./PasswordInput"
 import { inputCls, labelCls } from "./FormField"
 
-const BasicInfoStep = ({ form, onChange, onNext, onBack, isPassenger, onSubmit }) => 
+const BasicInfoStep = ({ form, onChange, onNext, onBack, isPassenger, onSubmit, loading }) => 
 {
     const set = (field) => (e) => onChange(field, e.target.value)
 
@@ -56,7 +56,15 @@ const BasicInfoStep = ({ form, onChange, onNext, onBack, isPassenger, onSubmit }
                     isPassenger
                     ?
                         <button type="button" onClick={onSubmit} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
-                            Create passenger account
+                            {
+                                loading
+                                ? 
+                                    <>
+                                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Submitting…
+                                    </>
+                                : 
+                                    "Create passenger account"
+                            }
                         </button>
                     :
                          <button type="button" onClick={onNext} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
