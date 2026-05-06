@@ -139,7 +139,7 @@ const SuccessScreen = ({ role }) => (
                     Awaiting approval
                 </button>
             :
-                <Link to="/dashboard" className="inline-block mt-2 bg-[#3b68d8] text-white font-semibold text-sm px-8 py-3 rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)]">Login</Link>
+                <Link to="/dashboard" className="inline-block mt-2 bg-[#3b68d8] text-white font-semibold text-sm px-8 py-3 rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)]">Go to dashboard</Link>
         }
     </div>
 )

@@ -55,7 +55,7 @@ const BasicInfoStep = ({ form, onChange, onNext, onBack, isPassenger, onSubmit, 
                 {
                     isPassenger
                     ?
-                        <button type="button" onClick={onSubmit} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
+                        <button type="button" onClick={onSubmit} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center justify-center gap-2">
                             {
                                 loading
                                 ? 
