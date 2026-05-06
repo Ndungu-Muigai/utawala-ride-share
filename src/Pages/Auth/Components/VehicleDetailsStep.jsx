@@ -23,26 +23,24 @@ const VehicleDetailsStep = ({ form, onChange, onNext, onBack }) => {
 
             <div className="grid grid-cols-2 gap-4">
                 <FormField label="Vehicle type">
-                    <select value={form.vehicleType} onChange={set("vehicleType")} className={inputCls}>
+                    <select value={form.vehicleType} onChange={set("vehicleType")} className={`${inputCls} bg-inherit text-white`}>
                         <option value="" disabled>Select type</option>
                         {VEHICLE_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
                 </FormField>
                 <FormField label="Available seats">
-                    <select value={form.vehicleSeats} onChange={set("vehicleSeats")} className={inputCls}>
+                    <select value={form.vehicleSeats} onChange={set("vehicleSeats")} className={`${inputCls} bg-inherit text-white`}>
                         <option value="" disabled>Select seats</option>
                         {[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map(n => <option key={n} value={n}>{n} seat{n > 1 ? "s" : ""}</option>)}
                     </select>
                 </FormField>
             </div>
 
-            <TextInput label="Route (e.g. Utawala → CBD)" placeholder="e.g. Utawala → Kencom" value={form.route} onChange={set("route")} />
-
             <div className="flex gap-3 pt-1">
                 <button type="button" onClick={onBack} className="flex-1 py-3.5 rounded-xl text-sm font-semibold text-[rgba(245,240,232,0.5)] border border-[rgba(245,240,232,0.08)] hover:border-[rgba(245,240,232,0.2)] transition-all">
                     Back
                 </button>
-                <button type="button" onClick={onNext} disabled={!valid} className="flex-[2] bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
+                <button type="button" onClick={onNext} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
                     Continue
                 </button>
             </div>

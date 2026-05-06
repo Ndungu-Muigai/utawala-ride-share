@@ -15,7 +15,8 @@ const roles = [
 
 const RoleSelector = ({ selected, onSelect, onNext }) => (
     <div>
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <p className="mb-2 ">Select your role</p>
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
             {
                 roles.map(role => (
                     <button key={role.id} type="button" onClick={() => onSelect(role.id)} className={`text-left p-5 rounded-2xl border transition-all duration-200 ${selected === role.id ? "border-[#3b68d8] bg-[rgba(59,104,216,0.1)] shadow-[0_0_0_1px_rgba(59,104,216,0.4)]" : "border-[rgba(245,240,232,0.08)] bg-[rgba(245,240,232,0.03)] hover:border-[rgba(245,240,232,0.2)]" }`}>

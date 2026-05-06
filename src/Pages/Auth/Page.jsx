@@ -16,13 +16,13 @@ const AuthPage = () =>
     const { title, sub } = headings[tab]
 
     return (
-        <section className="relative min-h-screen bg-[#0D0B08] text-[#F5F0E8] flex items-center justify-center overflow-hidden font-sans px-4 py-6 md:py-2">
+        <section className="relative min-h-screen bg-[#0D0B08] text-[#F5F0E8] flex items-center justify-center overflow-hidden font-sans px-4">
             <AuthBackground />
 
-            <div className={`relative z-10 w-full ${tab === "login" ? "max-w-xl" : "max-w-4xl"} mx-auto transition-all duration-300`}>
+            <div className={`relative z-10 w-full ${tab === "login" ? "max-w-md" : "max-w-4xl"} mx-auto transition-all duration-300`}>
 
                 {/* Header */}
-                <div className="text-center mb-1">
+                <div className="text-center mb-2">
                     <h1 className="text-3xl font-extrabold tracking-tight">{title}</h1>
                     <p className="text-[rgba(245,240,232,0.45)] text-sm mt-2">{sub}</p>
                 </div>

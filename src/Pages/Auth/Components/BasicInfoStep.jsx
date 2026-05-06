@@ -2,7 +2,8 @@ import { TextInput } from "./FormField"
 import PasswordInput from "./PasswordInput"
 import { inputCls, labelCls } from "./FormField"
 
-const BasicInfoStep = ({ form, onChange, onNext, onBack }) => {
+const BasicInfoStep = ({ form, onChange, onNext, onBack, isPassenger, onSubmit }) => 
+{
     const set = (field) => (e) => onChange(field, e.target.value)
 
     const valid =
@@ -40,13 +41,28 @@ const BasicInfoStep = ({ form, onChange, onNext, onBack }) => {
                 <p className="text-xs text-red-400">Passwords do not match</p>
             )}
 
+            {
+                isPassenger && (
+                    <p className="text-xs text-[rgba(245,240,232,0.4)] leading-relaxed -mt-1">
+                        By creating an account, you agree to our <a href="#" className="text-[#3b68d8] hover:underline">Terms of Service</a> and <a href="#" className="text-[#3b68d8] hover:underline">Privacy Policy</a>.
+                    </p>
+                )
+            }
             <div className="flex gap-3 pt-1">
                 <button type="button" onClick={onBack} className="flex-1 py-3.5 rounded-xl text-sm font-semibold text-[rgba(245,240,232,0.5)] border border-[rgba(245,240,232,0.08)] hover:border-[rgba(245,240,232,0.2)] transition-all">
                     Back
                 </button>
-                <button type="button" onClick={onNext} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
-                    Continue
-                </button>
+                {
+                    isPassenger
+                    ?
+                        <button type="button" onClick={onSubmit} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
+                            Create passenger account
+                        </button>
+                    :
+                         <button type="button" onClick={onNext} disabled={!valid} className="flex-1 bg-[#3b68d8] text-white font-semibold text-sm py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none">
+                            Continue to vehicle details
+                        </button>
+                }
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ import VehicleDetailsStep from "./VehicleDetailsStep"
 import DocumentsStep from "./DocumentsStep"
 
 const PASSENGER_STEPS = ["Role", "Your info"]
-const DRIVER_STEPS    = ["Role", "Your info", "Vehicle", "Documents"]
+const DRIVER_STEPS    = ["Role", "Your info", "Vehicle Details", "Upload documents"]
 
 const emptyForm = 
 {
@@ -16,9 +16,9 @@ const emptyForm =
     firstName: "", lastName: "", email: "", phone: "", password: "", confirmPassword: "",
     // driver - vehicle
     idNumber: "", vehicleMake: "", vehicleModel: "", vehiclePlate: "",
-    vehicleYear: "", vehicleType: "", vehicleSeats: "", route: "",
+    vehicleYear: "", vehicleType: "", vehicleSeats: "", 
     // driver - documents
-    license: null, idPhoto: null, logbook: null, insurance: null,
+    license: null, idFront: null, idBack: null, logbook: null, insurance: null,
 }
 
 const RegisterFlow = ({ onSwitchToLogin }) => 
@@ -36,6 +36,15 @@ const RegisterFlow = ({ onSwitchToLogin }) =>
     const handlePassengerSubmit = async () => 
     {
         setLoading(true)
+
+        //Adding the role to the form data to be submitted to the backend
+        const formData = new FormData()
+        for (const key in form) 
+        {
+            formData.append(key, form[key])
+        }
+        formData.append("role", role)
+
         // TODO: wire up your passenger registration API call here
         await new Promise(r => setTimeout(r, 1200))
         setLoading(false)
@@ -45,6 +54,15 @@ const RegisterFlow = ({ onSwitchToLogin }) =>
     const handleDriverSubmit = async () => 
     {
         setLoading(true)
+
+        //Adding the role to the form data to be submitted to the backend
+        const formData = new FormData()
+        for (const key in form) 
+        {
+            formData.append(key, form[key])
+        }
+        formData.append("role", role)
+
         // TODO: wire up your driver registration API call here (include file uploads)
         await new Promise(r => setTimeout(r, 1500))
         setLoading(false)
@@ -64,7 +82,7 @@ const RegisterFlow = ({ onSwitchToLogin }) =>
 
             {
                 step === 2 && 
-                    <BasicInfoStep form={form} onChange={update} onBack={() => setStep(1)} onNext={() => role === "driver" ? setStep(3) : handlePassengerSubmit()} loading={loading} isPassenger={role === "passenger"} />
+                    <BasicInfoStep form={form} onChange={update} onBack={() => setStep(1)} onNext={() => role === "driver" ? setStep(3) : handlePassengerSubmit()} loading={loading} isPassenger={role === "passenger"} onSubmit={handleDriverSubmit}/>
             }
 
             {
@@ -77,7 +95,7 @@ const RegisterFlow = ({ onSwitchToLogin }) =>
                     <DocumentsStep form={form} onChange={update} onBack={() => setStep(3)} onSubmit={handleDriverSubmit} loading={loading} />
             }
 
-            <p className="text-center text-xs text-[rgba(245,240,232,0.3)] pt-4">
+            <p className="text-center text-xs text-[rgba(245,240,232,0.3)] pt-3">
                 Already have an account?{" "}
                 <button type="button" onClick={onSwitchToLogin} className="text-[#3b68d8] hover:underline font-medium">
                     Sign in
@@ -114,9 +132,15 @@ const SuccessScreen = ({ role }) => (
                 }
             </p>
         </div>
-        <Link to="/login" className="inline-block mt-2 bg-[#3b68d8] text-white font-semibold text-sm px-8 py-3 rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)]">
-            {role === "driver" ? "Go to dashboard" : "Start riding"}
-        </Link>
+        {
+            role === "driver" 
+            ?
+                <button type="button" disabled className="mt-2 bg-[#3b68d8] text-white font-semibold text-sm px-8 py-3 rounded-xl opacity-50 cursor-not-allowed">
+                    Awaiting approval
+                </button>
+            :
+                <Link to="/dashboard" className="inline-block mt-2 bg-[#3b68d8] text-white font-semibold text-sm px-8 py-3 rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)]">Login</Link>
+        }
     </div>
 )
 
