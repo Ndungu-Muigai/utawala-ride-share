@@ -44,7 +44,7 @@ const HomePage = () =>
 
                     {/* CTA */}
                     <div className="mb-12">
-                        <Link to="/login" className="inline-flex items-center gap-2.5 bg-[#3b68d8] text-white text-[0.95rem] font-semibold px-7 py-3.5 rounded-full transition-all duration-200 hover:bg-[#3b68d8] hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] group"
+                        <Link to="/auth" className="inline-flex items-center gap-2.5 bg-[#3b68d8] text-white text-[0.95rem] font-semibold px-7 py-3.5 rounded-full transition-all duration-200 hover:bg-[#3b68d8] hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(59,104,216,0.4)] group"
                         >Get started</Link>
                     </div>
 
