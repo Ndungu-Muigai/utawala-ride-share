@@ -237,8 +237,6 @@ const VehicleStep = ({ form, onChange, onBack, onNext }: {form: typeof EMPTY_FOR
     //Creating states to store vehicle makes and models
     const makes  = Object.keys(CAR_DATA)
     const models = form.vehicleMake ? CAR_DATA[form.vehicleMake] ?? [] : []
-    const [loadingMakes, setLoadingMakes]   = useState(true)
-    const [loadingModels, setLoadingModels] = useState(false)
 
     const onMakeChange = (e: React.ChangeEvent<HTMLSelectElement>) => 
     {
@@ -255,8 +253,8 @@ const VehicleStep = ({ form, onChange, onBack, onNext }: {form: typeof EMPTY_FOR
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div>
                     <label className={labelCls}>Make</label>
-                    <select value={form.vehicleMake} onChange={set("vehicleMake")} disabled={loadingMakes} className={inputCls}>
-                        <option value="" disabled>{loadingMakes ? "Loading…" : "Select make…"}</option>
+                    <select value={form.vehicleMake} onChange={set("vehicleMake")} className={inputCls}>
+                        <option value="" disabled>Select make…</option>
                         {
                             makes.map(m => 
                                 <option key={m} value={m} className="bg-[#0D0B08]">{m}</option>
@@ -267,24 +265,9 @@ const VehicleStep = ({ form, onChange, onBack, onNext }: {form: typeof EMPTY_FOR
                 {/* Model */}
                 <div>
                     <label className={labelCls}>Model</label>
-                    <select value={form.vehicleModel} onChange={set("vehicleModel")} disabled={!form.vehicleMake || loadingModels} className={inputCls}>
-                        <option value="" disabled>
-                            {
-                                !form.vehicleMake 
-                                ? 
-                                    "Select make first" 
-                                : 
-                                    loadingModels 
-                                    ? 
-                                        "Loading…" 
-                                    : 
-                                        "Select model…"
-                                }
-                        </option>
-                        {
-                            models.map(m => 
-                                <option key={m} value={m} className="bg-[#0D0B08]">{m}</option>
-                        )}
+                    <select value={form.vehicleModel} onChange={set("vehicleModel")} disabled={!form.vehicleMake } className={inputCls}>
+                        <option value="" disabled>{!form.vehicleMake ? "Select make first" : "Select model…"}</option>
+                        {models.map(m => <option key={m} value={m} className="bg-[#0D0B08]">{m}</option>)}
                     </select>
                 </div>
             </div>
