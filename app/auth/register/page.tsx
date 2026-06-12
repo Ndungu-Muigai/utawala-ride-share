@@ -415,7 +415,7 @@ const PasswordInput = ({ label, placeholder, value, onChange }: {label: string, 
 
 const FileUpload = ({ label, hint, accept, value, onChange }: {label: string, hint: string, accept: string, value: File | null, onChange: (file: File | null) => void }) => 
 {
-    const ref = useRef(null)
+    const ref = useRef<HTMLInputElement>(null)
     return (
         <div>
             <label className={labelCls}>{label}</label>
