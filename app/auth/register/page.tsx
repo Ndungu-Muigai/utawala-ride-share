@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useState, useRef } from "react"
 import Link from "next/link"
 import { Eye, EyeOff, Upload, X, Check } from "lucide-react"
 
@@ -165,7 +165,7 @@ const RoleStep = ({ role, onSelect, onNext }: {role: "passenger" | "driver" | nu
 //  Step 2: Basic Info 
 const BasicInfoStep = ({ form, onChange, onNext, onBack, isPassenger, onSubmit, loading }: {form: typeof EMPTY_FORM, onChange: (field: keyof typeof EMPTY_FORM, value: unknown) => void, onNext: () => void, onBack: () => void, isPassenger: boolean, onSubmit: () => void, loading: boolean}) =>
 {
-    const set = (field: string) => (e: { target: { value: unknown } }) => onChange(field, e.target.value)
+    const set = (field: keyof typeof EMPTY_FORM) => (e: { target: { value: unknown } }) => onChange(field, e.target.value)
 
     const valid = form.firstName && form.lastName && form.email &&
         form.phone && form.password && form.password === form.confirmPassword
@@ -243,13 +243,8 @@ const VehicleStep = ({ form, onChange, onBack, onNext }: {form: typeof EMPTY_FOR
     const makes  = Object.keys(CAR_DATA)
     const models = form.vehicleMake ? CAR_DATA[form.vehicleMake] ?? [] : []
 
-    const onMakeChange = (e: React.ChangeEvent<HTMLSelectElement>) => 
-    {
-        onChange("vehicleMake", e.target.value)
-        onChange("vehicleModel", "")
-    }
+    const set = (field: keyof typeof EMPTY_FORM) => (e: { target: { value: unknown } }) => onChange(field, e.target.value)
 
-    const set = (field: string) => (e) => onChange(field, e.target.value)
     const valid = form.vehicleMake && form.vehicleModel && form.vehiclePlate && form.vehicleYear && form.vehicleType
 
     return (
@@ -306,7 +301,7 @@ const VehicleStep = ({ form, onChange, onBack, onNext }: {form: typeof EMPTY_FOR
 
 const DocumentsStep = ({ form, onChange, onBack, onSubmit, loading }: {form: typeof EMPTY_FORM, onChange: (field: keyof typeof EMPTY_FORM, value: unknown) => void, onBack: () => void, onSubmit: () => void, loading: boolean}) =>
 {
-    const set   = (field: string) => (file: unknown) => onChange(field, file)
+    const set = (field: keyof typeof EMPTY_FORM) => (file: unknown) => onChange(field, file)
     const valid = form.logbook && form.license && form.idFront && form.idBack
 
     return (
