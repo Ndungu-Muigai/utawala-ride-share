@@ -1,9 +1,38 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
+
+import { useState, useEffect } from "react"
 import Carpool from "../assets/Carpool.png"
 
 const HomePage = () => 
 {
+    //Adding the routes 
+    const routes = [
+        "Utawala · CBD",
+        "Utawala · Westlands",
+        "Utawala · Upperhill",
+        "Utawala · Gigiri",
+        "Utawala · Karen",
+    ]
+
+    //Functionality to switch the routes every 3 seconds
+    const [routeIndex, setRouteIndex] = useState(0)
+    const [fading, setFading] = useState(false)
+
+    useEffect(() => 
+    {
+        const interval = setInterval(() => 
+        {
+            setFading(true)
+            setTimeout(() => {
+            setRouteIndex(i => (i + 1) % routes.length)
+            setFading(false)
+            }, 300)
+        }, 2500)
+        return () => clearInterval(interval)
+    }, [])
     return (
         <section className="relative min-h-screen bg-[#0D0B08] text-[#F5F0E8] flex items-center overflow-hidden font-sans">
 
@@ -23,8 +52,10 @@ const HomePage = () =>
                 <div>
                     {/* Eyebrow */}
                     <div className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.15em] uppercase text-[#3b68d8] mb-6">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#3b68d8] animate-pulse" />
-                        Utawala · Nairobi
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#3b68d8] animate-pulse shrink-0" />
+                        <span className="transition-opacity duration-300" style={{ opacity: fading ? 0 : 1 }}>
+                            {routes[routeIndex]}
+                        </span>
                     </div>
 
                     {/* Headline */}
