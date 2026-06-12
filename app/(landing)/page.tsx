@@ -32,7 +32,8 @@ const HomePage = () =>
             }, 300)
         }, 2500)
         return () => clearInterval(interval)
-    }, [])
+    }, [routes.length])
+    
     return (
         <section className="relative min-h-screen bg-[#0D0B08] text-[#F5F0E8] flex items-center overflow-hidden font-sans">
 
