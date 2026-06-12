@@ -101,7 +101,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) =>
                         {
                             links.map((link) => (
                             <li key={link.name}>
-                                <Link href={link.href} className={`flex items-center gap-3 text-sm font-medium rounded-md hover:bg-[#4665cc] transition-colors ${sidebarOpen ? "px-4 py-3" : "justify-center p-2"} ${isActiveLink(link.href) ? "bg-[#0d163f]" : ""}`} title={link.name}>
+                                <Link href={link.href} className={`flex items-center gap-3 text-sm font-medium rounded-md hover:bg-[#4665cc] transition-colors ${sidebarOpen ? "px-4 py-3" : "justify-center p-2"} ${isActiveLink(link.href) ? "bg-[#3b68d8] text-white" : "text-[#F5F0E8]/70"}`} title={link.name}>
                                     {link.icon}
                                     {
                                         sidebarOpen && <span>{link.name}</span>
