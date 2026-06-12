@@ -79,7 +79,7 @@ const RegistrationPage = () =>
         setDone(true)
     }
 
-    if (done) return <SuccessScreen role={role} />
+    if (done) return <SuccessScreen role={role!} />
 
     return (
         <div className="space-y-6">
