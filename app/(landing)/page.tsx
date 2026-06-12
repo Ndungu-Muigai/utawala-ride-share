@@ -81,7 +81,7 @@ const HomePage = () =>
 
                         {/* Main image card */}
                         <div className="relative bg-[rgba(245,240,232,0.04)] border border-[rgba(245,240,232,0.08)] rounded-[28px] overflow-hidden transition-transform duration-500 hover:-translate-y-1">
-                            <Image src={Carpool} alt="People sharing a ride in Utawala" className="w-full block object-contain"/>
+                            <Image src={Carpool} alt="People sharing a ride" loading="eager" className="w-full block object-contain"/>
                         </div>
 
                         {/* Floating stat — bottom right */}
