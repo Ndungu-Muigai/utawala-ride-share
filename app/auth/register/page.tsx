@@ -66,6 +66,8 @@ const RegistrationPage = () =>
 
     const submit = async () => 
     {
+        if (!role) return
+        
         setLoading(true)
         const fd = new FormData()
         Object.entries(form).forEach(([k, v]) => v && fd.append(k, v))
