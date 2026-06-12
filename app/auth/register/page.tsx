@@ -86,7 +86,8 @@ const RegistrationPage = () =>
             <StepIndicator steps={steps} current={step} />
 
             {
-                step === 1 && <RoleStep role={role} onSelect={setRole} onNext={() => setStep(2)} />
+                step === 1 && step === 1 && <RoleStep role={role} onSelect={(id) => setRole(id as "passenger" | "driver")} onNext={() => setStep(2)} />
+
             }
             {
                 step === 2 && <BasicInfoStep form={form} onChange={update} onBack={() => setStep(1)} onNext={() => setStep(3)} isPassenger={role === "passenger"} onSubmit={submit} loading={loading} />
@@ -122,7 +123,8 @@ const roles = [
     },
 ]
 
-const RoleStep = ({ role, onSelect, onNext }: {role: string | null,  onSelect: (id: string) => void, onNext: () => void}) => (
+const RoleStep = ({ role, onSelect, onNext }: {role: "passenger" | "driver" | null, onSelect: (id: "passenger" | "driver") => void, onNext: () => void}) =>
+ (
     <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {
