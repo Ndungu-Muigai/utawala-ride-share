@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { Car } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 const TabLink = ({ href, active, children }: { href: string; active: boolean; children: React.ReactNode }) => (
@@ -36,6 +37,14 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) =>
                     <h1 className="text-3xl font-extrabold tracking-tight">{title}</h1>
                     <p className="text-[rgba(245,240,232,0.45)] text-sm mt-2">{sub}</p>
                 </div>
+
+                {/* Navbar */}
+                <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 border-b border-[rgba(245,240,232,0.06)] bg-[rgba(13,11,8,0.8)] backdrop-blur-md">
+                    <Link href="/" className="flex items-center gap-2 text-[#F5F0E8] font-bold text-sm tracking-tight hover:text-[#3b68d8] transition-colors">
+                        <Car size={18} className="text-[#3b68d8]" />
+                        RideApp
+                    </Link>
+                </nav>
 
                 {/* Card */}
                 <div className="relative">
