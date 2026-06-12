@@ -55,11 +55,11 @@ const primaryBtn = (disabled: boolean) => `w-full flex-1 bg-[#3b68d8] text-white
 //  Page 
 const RegistrationPage = () => 
 {
-    const [step, setStep]       = useState(1)
-    const [role, setRole]       = useState(null)
-    const [form, setForm]       = useState(EMPTY_FORM)
+    const [step, setStep] = useState(1)
+    const [role, setRole] = useState<"passenger" | "driver" | null>(null)
+    const [form, setForm] = useState(EMPTY_FORM)
     const [loading, setLoading] = useState(false)
-    const [done, setDone]       = useState(false)
+    const [done, setDone] = useState(false)
 
     const steps  = role === "driver" ? DRIVER_STEPS : PASSENGER_STEPS
     const update = (field: keyof typeof EMPTY_FORM, value: unknown) => setForm(p => ({ ...p, [field]: value }))
