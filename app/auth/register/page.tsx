@@ -108,19 +108,20 @@ const RegistrationPage = () =>
 }
 
 //  Step 1: Role 
-const roles = [
-    {
-        id: "passenger",
-        title: "I'm a Passenger",
-        desc: "Find and book rides on your daily route. Save money, skip the chaos.",
-        perks: ["Book rides instantly", "Track your driver", "Pay via M-Pesa"],
-    },
-    {
-        id: "driver",
-        title: "I'm a Driver",
-        desc: "Offer seats on your daily commute and earn on every trip you already take.",
-        perks: ["Set your own schedule", "Earn per seat", "Verified passengers only"],
-    },
+const roles: { id: "passenger" | "driver"; title: string; desc: string; perks: string[] }[] = 
+[
+  {
+    id: "passenger",
+    title: "I'm a Passenger",
+    desc: "Find and book rides on your daily route. Save money, skip the chaos.",
+    perks: ["Book rides instantly", "Track your driver", "Pay via M-Pesa"],
+  },
+  {
+    id: "driver",
+    title: "I'm a Driver",
+    desc: "Offer seats on your daily commute and earn on every trip you already take.",
+    perks: ["Set your own schedule", "Earn per seat", "Verified passengers only"],
+  },
 ]
 
 const RoleStep = ({ role, onSelect, onNext }: {role: "passenger" | "driver" | null, onSelect: (id: "passenger" | "driver") => void, onNext: () => void}) =>
