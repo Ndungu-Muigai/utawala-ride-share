@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 
+import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { Search, MoreVertical, Star, Car, TrendingUp, AlertTriangle, AlertCircle, X, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react"
@@ -114,9 +115,9 @@ const ActionMenu = ({ driver, onStatusChange }: { driver: Driver; onStatusChange
         setOpen((v) => !v)
     }
 
-    type Action = { label: string; status?: DriverStatus; danger?: boolean }
+    type Action = { label: string; href?: string; status?: DriverStatus; danger?: boolean }
     const actions: Action[] = [
-        { label: "View profile" },
+        { label: "View profile", href: `/admin/drivers/${driver.id}` },
         driver.status !== "active"    ? { label: "Reinstate driver", status: "active"    } : null,
         driver.status !== "suspended" ? { label: "Suspend driver",   status: "suspended", danger: true } : null,
     ].filter(Boolean) as Action[]
@@ -131,11 +132,18 @@ const ActionMenu = ({ driver, onStatusChange }: { driver: Driver; onStatusChange
                     <div onClick={() => setOpen(false)} className="fixed inset-0 z-10" />
                     <div style={{ top: coords.top, right: coords.right }} className="fixed z-20 bg-white border border-gray-200 rounded-lg shadow-lg min-w-40 overflow-hidden">
                         {
-                            actions.map((a) => (
-                                <button key={a.label} onClick={() => { if (a.status) onStatusChange(driver.id, a.status); setOpen(false) }} className={`block w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors ${a.danger ? "text-red-600" : "text-gray-700"}`}>
-                                    {a.label}
-                                </button>
-                            ))
+                            actions.map((a) =>
+                                a.href 
+                                ? 
+                                    <Link key={a.label} href={a.href} onClick={() => setOpen(false)} className="block w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors text-gray-700">
+                                        {a.label}
+                                    </Link>
+                                : 
+                                    <button key={a.label} onClick={() => { if (a.status) onStatusChange(driver.id, a.status); setOpen(false) }} className={`block w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors ${a.danger ? "text-red-600" : "text-gray-700"}`}>
+                                        {a.label}
+                                    </button>
+                                
+                            )
                         }
                     </div>
                 </>,
