@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { ArrowLeft, Car, Users, MapPin, Clock, CreditCard, Star, AlertTriangle, CheckCircle, X, } from "lucide-react"
 
@@ -166,6 +167,8 @@ export default function TripDetailPage()
 {
     const [toast, setToast] = useState<{ message: string; type: "success" | "danger" } | null>(null)
 
+    const router = useRouter()
+
     return (
         <div className="px-4 pb-10">
 
@@ -194,10 +197,10 @@ export default function TripDetailPage()
 
             {/* Back nav */}
             <div className="py-3">
-                <Link href="/admin/trips" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition-colors">
+                <button onClick={()=> router.back()} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-blue-500 hover:underline transition-colors">
                     <ArrowLeft size={14} />
-                    Back to Trips
-                </Link>
+                    Back
+                </button>
             </div>
 
             {/* Trip header */}

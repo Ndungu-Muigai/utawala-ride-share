@@ -113,10 +113,10 @@ export default function DriverProfilePage()
 
             {/* Back nav */}
             <div className="py-2">
-                <Link href="/admin/drivers" className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-blue-500 hover:underline transition-colors">
+                <button onClick={()=> router.back()} className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-blue-500 hover:underline transition-colors">
                     <ArrowLeft size={14} />
-                    All drivers
-                </Link>
+                    Back
+                </button>
             </div>
 
             {/* Header card */}

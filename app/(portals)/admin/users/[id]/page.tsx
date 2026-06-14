@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { ArrowLeft, Mail, Phone, MapPin, Calendar, Shield, Star, Car, AlertTriangle, CheckCircle, Clock, X, Ban } from "lucide-react"
 
@@ -170,6 +171,8 @@ const UserProfilePage = () =>
 
     const cancelRate = user.totalTrips > 0 ? ((user.cancelledTrips / user.totalTrips) * 100).toFixed(0) : "0"
 
+    const router = useRouter()
+
     return (
         <div className="px-4 pb-10">
             {/* Toast */}
@@ -197,10 +200,10 @@ const UserProfilePage = () =>
 
             {/* Back nav */}
             <div className="py-2">
-                <Link href="/admin/users" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-blue-500 hover:underline transition-colors">
+                <button onClick={()=> router.back()} className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-blue-500 hover:underline transition-colors">
                     <ArrowLeft size={14} />
-                    Back to Users
-                </Link>
+                    Back
+                </button>
             </div>
 
             {/* Profile header */}
