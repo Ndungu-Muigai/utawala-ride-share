@@ -4,7 +4,7 @@
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
-import { Search, MoreVertical, Star, Car, TrendingUp, AlertTriangle, AlertCircle, X, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react"
+import { Search, MoreVertical, Star, Car, AlertTriangle, X, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react"
 
 //  Types
 type DriverStatus = "active" | "suspended"
@@ -284,44 +284,30 @@ const DriversPage = () =>
                     {
                         const Icon = stat.icon
                         return (
-                            <div key={stat.title} className="bg-white border border-gray-300 rounded-xl p-4 hover:shadow-sm transition-shadow">
-                                <div className="flex items-center justify-between mb-4">
-                                    <div className={`p-2.5 rounded-lg ${stat.color}`}>
-                                        <Icon size={18} />
+                            <div key={stat.title} className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-px transition-all duration-200">
+                                <div className="flex items-center justify-between gap-3">
+                                    {/* Left: text */}
+                                    <div className="min-w-0">
+                                        <p className="text-xl font-bold text-gray-900 leading-tight">{stat.value}</p>
+                                        <p className="text-[11px] font-medium uppercase tracking-wide text-gray-500 mt-1">{stat.title}</p>
                                     </div>
-                                    <span className="flex items-center gap-1 text-xs text-emerald-600 font-medium">
-                                        <TrendingUp size={11} />
-                                        {stat.change}
-                                    </span>
+                                    {/* Right: icon */}
+                                    <div className={`p-2 rounded-lg shrink-0 ${stat.color}`}>
+                                        <Icon size={20} />
+                                    </div>
                                 </div>
-                                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                                <p className="text-gray-500 text-xs font-medium uppercase tracking-wide mt-1">{stat.title}</p>
                             </div>
                         )
                     })
                 }
             </div>
 
-            {/* Alert banner */}
-            {
-                suspendedCount > 0 && (
-                    <div className="mb-3 flex items-start gap-2 p-3 bg-red-50 border border-red-100 rounded-lg">
-                        <AlertCircle size={14} className="text-red-500 mt-0.5 shrink-0" />
-                        <p className="text-xs text-red-600">
-                            {suspendedCount} driver{suspendedCount > 1 ? "s are" : " is"} currently suspended and may need review.
-                        </p>
-                    </div>
-                )
-            }
-
             {/* Table card */}
             <div className="bg-white border border-gray-300 rounded-xl overflow-visible">
                 {/* Table toolbar */}
                 <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-100 flex-wrap">
                     <div className="flex items-center gap-2">
-                        <Car size={16} className="text-gray-400" />
                         <h2 className="text-sm font-semibold text-gray-900">All Drivers</h2>
-                        <span className="ml-1 text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5">{filtered.length}</span>
                     </div>
                     <div className="flex items-center gap-2">
                         {/* Search */}
