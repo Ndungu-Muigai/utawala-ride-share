@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 
-import { Car, DollarSign, Route, Users, TrendingUp, Clock, Star, AlertCircle } from "lucide-react"
+import { Car, DollarSign, Route, Users, Clock, Star, AlertCircle } from "lucide-react"
 
 const AdminDashboard = () => 
 {
