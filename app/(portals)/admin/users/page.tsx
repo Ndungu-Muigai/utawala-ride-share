@@ -4,7 +4,7 @@
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
-import { AlertTriangle, AlertCircle, Users, Star, TrendingUp, Search, MoreVertical, ChevronLeft, ChevronRight, X, CheckCircle, } from "lucide-react"
+import { AlertTriangle, Users, Star, Search, MoreVertical, ChevronLeft, ChevronRight, X, CheckCircle, } from "lucide-react"
 
 // Types 
 type UserStatus = "active" | "suspended"
