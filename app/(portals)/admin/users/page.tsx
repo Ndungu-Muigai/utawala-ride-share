@@ -349,7 +349,7 @@ export default function UsersPage()
             const Icon = stat.icon
             return (
               <div key={stat.title} className="bg-white border border-gray-300 rounded-xl p-4 hover:shadow-sm transition-shadow">
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center justify-between gap-3">
                   
                   {/* Left: text */}
                   <div>
@@ -358,7 +358,7 @@ export default function UsersPage()
                   </div>
                   {/* Right: icon */}
                   <div className={`p-2 rounded-lg shrink-0 ${stat.color}`}>
-                    <Icon size={16} />
+                    <Icon size={20} />
                   </div>
                 </div>
               </div>
@@ -371,14 +371,7 @@ export default function UsersPage()
       <div className="bg-white border border-gray-300 rounded-xl overflow-visible">
         {/* Toolbar */}
         <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-100 flex-wrap">
-          <div className="flex items-center gap-2">
-            <Users size={16} className="text-gray-400" />
-            <h2 className="text-sm font-semibold text-gray-900">All Users</h2>
-            <span className="ml-1 text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5">
-              {filtered.length}
-            </span>
-          </div>
-
+          <h2 className="text-sm font-semibold text-gray-900">All Users</h2>
           <div className="flex items-center gap-2">
             <div className="relative">
               <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />

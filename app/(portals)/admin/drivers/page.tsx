@@ -306,9 +306,7 @@ const DriversPage = () =>
             <div className="bg-white border border-gray-300 rounded-xl overflow-visible">
                 {/* Table toolbar */}
                 <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-100 flex-wrap">
-                    <div className="flex items-center gap-2">
-                        <h2 className="text-sm font-semibold text-gray-900">All Drivers</h2>
-                    </div>
+                    <h2 className="text-sm font-semibold text-gray-900">All Drivers</h2>
                     <div className="flex items-center gap-2">
                         {/* Search */}
                         <div className="relative">
