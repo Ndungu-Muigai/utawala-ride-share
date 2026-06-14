@@ -73,18 +73,20 @@ const AdminDashboard = () =>
                 {
                     const Icon = stat.icon
                     return (
-                        <div key={stat.title} className="bg-white border border-gray-300 rounded-xl p-3 hover:shadow-sm transition-shadow">
-                            <div className="flex items-center justify-between mb-4">
-                                <div className={`p-2.5 rounded-lg ${stat.color}`}>
+                        <div key={stat.title} className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-px transition-all duration-200">
+                            <div className="flex items-center justify-between gap-3">
+
+                                {/* Left content */}
+                                <div className="min-w-0">
+                                    <p className="text-xl font-bold text-gray-900 leading-tight">{stat.value}</p>
+                                    <p className="text-[11px] font-medium uppercase tracking-wide text-gray-500 mt-1">{stat.title}</p>
+                                </div>
+
+                                {/* Right icon */}
+                                <div className={`p-2 rounded-lg shrink-0 ${stat.color}`}>
                                     <Icon size={20} />
                                 </div>
-                                <span className="flex items-center gap-1 text-xs text-emerald-600 font-medium">
-                                    <TrendingUp size={12} />
-                                    {stat.change}
-                                </span>
                             </div>
-                            <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                            <p className="text-gray-500 text-xs font-medium uppercase tracking-wide mt-1">{stat.title}</p>
                         </div>
                     )
                 })
