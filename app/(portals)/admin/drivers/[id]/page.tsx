@@ -1,9 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, Star, Car, Phone, Calendar, MapPin, TrendingUp, AlertTriangle, CheckCircle, Navigation, Clock, Trash2, } from "lucide-react"
+import { ArrowLeft, Star, Car, Phone, Calendar, MapPin, TrendingUp, AlertTriangle, CheckCircle, Navigation, Clock,} from "lucide-react"
 
 //  Types 
 type DriverStatus = "active" | "suspended"
