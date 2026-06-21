@@ -35,7 +35,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, role }: SidebarProps) =>
         return () => document.removeEventListener("mousedown", handleClickOutside)
     }, [sidebarRef])
 
-    const isActiveLink = (href: string) => pathname === href
+
+    const isActiveLink = (href: string) => {
+        // Among links that match this pathname (exactly, or as a parent segment),
+        // only the most specific (longest) one should be marked active. That's what
+        // stops a section's own root link (e.g. /driver) from lighting up on every
+        // sibling sub-route (e.g. /driver/passengers) it happens to be a prefix of.
+        const matches = links.filter((l) => pathname === l.href || pathname.startsWith(`${l.href}/`))
+        if (matches.length === 0) return false
+        const bestMatch = matches.reduce((a, b) => (b.href.length > a.href.length ? b : a))
+        return bestMatch.href === href
+    }
 
     const logout = () => 
     {
