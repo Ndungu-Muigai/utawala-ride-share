@@ -16,6 +16,7 @@ export const navLinks: Record<"admin" | "driver" | "user", NavLink[]> = {
   driver: [
     { name: "Dashboard", href: "/driver",          icon: <LayoutDashboard /> },
     { name: "My Trips",  href: "/driver/trips",    icon: <MapPin /> },
+    { name: "Passengers",  href: "/driver/passengers", icon: <Users /> },
     { name: "Earnings",  href: "/driver/earnings", icon: <DollarSign /> },
   ],
   user: [
