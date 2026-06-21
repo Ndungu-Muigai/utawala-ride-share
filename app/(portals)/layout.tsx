@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 const PortalLayout = ({ children }: { children: React.ReactNode }) => 
 {
     const [sidebarOpen, setSidebarOpen] = useState(false)
-    const [role, setRole] = useState<"admin" | "driver" | "user">("admin") // This should ideally come from user authentication data
+    const [role, setRole] = useState<"admin" | "driver" | "user">("driver") // This should ideally come from user authentication data
     const [user, setUser] = useState("Samuel Muigai")
     const [notifications, setNotifications] = useState(42)
     const [messages, setMessages] = useState(10)
